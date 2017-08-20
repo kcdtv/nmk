@@ -50,7 +50,7 @@ Visit [reaver t6x repository](https://github.com/t6x/reaver-wps-fork-t6x) for mo
  In good conditions WPA key is recovered inmediatly.  
 
 # Credits
-Full disclosure "Arcadyan livebox PIN generator" by **wifi-libre**
+Full disclosure "Arcadyan livebox PIN generator" by **wifi-libre**, script by **kcdtv**
 
 
 
