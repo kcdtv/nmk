@@ -1,3 +1,17 @@
+#! /bin/bash
+version=1.1
+# nmk.sh is a bash script that scans the wifi networks in search of livebox by arcadyan from orange (Spain) and genrates the default PIN every dtected device.
+# Copyright (C) 2017 kcdtv @ www.wifi-libre.com
+# This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+# Contact author: kcdtv@wifi-libre.com
+
+# Full disclosure about the arcadyan the breach
+
+# Global variables:
+grey="\033[0;37m"
+orange="\033[38;5;202m"
 red="\033[1;31m"
 yellow="\033[1;33m"
 white="\033[1;37m"
