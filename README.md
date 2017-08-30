@@ -69,7 +69,7 @@ warning: Do **not** moove **orangen.py** from your **nmk** folder; it has to be 
 
 
 # Credits
-Full disclosure "Arcadyan livebox PIN generator" by **wifi-libre**, script by **kcdtv**
+Full disclosure "Arcadyan livebox PIN generator" by **wifi-libre**, scripts by **kcdtv**
 
 
 
