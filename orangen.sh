@@ -21,7 +21,7 @@ ssid=$( echo $bssid | cut -c 3-)
 wan=$(printf "%X\n" $(( 0x$(echo $ssid) - 2 )))
 until  [[ "$(echo $serial | egrep -o '^[0-9]{4}' | wc -c)" == 5 ]];
   do
-   read -n 4 -ep  "Entra los 4 ultimos digitos del numero de sere: " seri
+   read -n 4 -ep  "Entra los 4 últimos digítos del número de serie: " seri
    serial=$( echo $seri | rev | cut -c -4 | rev )
 done
 echo -e "PIN por defecto > $orange"
