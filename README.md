@@ -1,9 +1,9 @@
 # nmk[![Bash4.2-shield]](http://tldp.org/LDP/abs/html/bashver4.html#AEN21220) [![License-shield]](https://raw.githubusercontent.com/v1s1t0r1sh3r3/airgeddon/master/LICENSE.md)   
-WiFi Scanner and Default WPS PIN Generator for Livebox 2.1 and Lievbox Next from Orange (ISP Spain)  
+Tool kit for generating WPS default PIN for Livebox 2.1 and Lievbox Next from Orange (ISP Spain)  
 [![livebox1]]  
 
 # Description
-**N**aranja **M**ekani**K** (**nmk**) is a simple bash script that scan the WiFi networks in search of 
+**N**aranja **M**ekani**K** (**nmk**) is a tool kit that porposes different way to genrate the default PIN from: 
  - Arcadyan ARV7519RW22 
  - Arcadyan ARV7520CW22  
  - Arcadyan VRV9510KWAC23  
@@ -16,6 +16,7 @@ It is quite similar to the one discovered by **Stefan Viehböck** on Arcadyan ea
 THe livebox is quite popular in Spain and we are speaking about more than a milion devices affected.  
 
 # Dependencies
+
 **nmk.sh** requires **wash 1.6.1** (or a superior version) and its depemdemcies.  
 This are the general steps in a debian based system to install **reaver 1.6.1** (it includes **wash**)  
  - Install the dependecies    
@@ -30,6 +31,7 @@ cd reaver-wps-fork-t6x/src/
 sudo make install
 ~~~  
 Visit [reaver t6x repository](https://github.com/t6x/reaver-wps-fork-t6x) for more information about wash and reaver.  
+
 
 # How to use nmk.sh?
  - Clone this repository  
@@ -48,6 +50,23 @@ Visit [reaver t6x repository](https://github.com/t6x/reaver-wps-fork-t6x) for mo
  - Just press CTRL + C to stop the script.  
  Interface is left in monitor mode in order to perform a reaver attack with the deafult PIN.  
  In good conditions WPA key is recovered inmediatly.  
+   
+   
+# How to use orangen.py
+```
+python orangen.py < 4 last digits mac WAN > < 4 last digits serial > 
+```
+tip: substract 2 from bSSID to get the WAN MAC  
+  
+  
+# How to use orangen.sh  
+Locate your terminal in your "nmk" folder and invocate bash to execute the script  
+```
+bash orangen.sh
+```  
+warning: Do **not** moove **orangen.py** from your **nmk** folder; it has to be in your nmk folder when you execute the script.  
+
+
 
 # Credits
 Full disclosure "Arcadyan livebox PIN generator" by **wifi-libre**, script by **kcdtv**
