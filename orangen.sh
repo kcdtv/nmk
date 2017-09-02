@@ -25,6 +25,6 @@ until  [[ "$(echo $serial | egrep -o '^[0-9]{4}' | wc -c)" == 5 ]];
    serial=$( echo $seri | rev | cut -c -4 | rev )
 done
 echo -e "PIN por defecto > $orange"
-python livebox.py $wan $serial
+python orangen.py $wan $serial
 echo -e "$grey
 Copyleft (C) 2017 kcdtv @ www.wifi-libre.com"
