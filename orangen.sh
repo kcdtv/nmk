@@ -7,8 +7,6 @@ version=1.1
 # You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
 # Contact script author: kcdtv@wifi-libre.com
 # Copyleft (C) 2017 kcdtv @ www.wifi-libre.com
-
-# Global variables:
 grey="\033[0;37m"
 orange="\033[38;5;202m"
 white="\033[1;37m"
@@ -17,8 +15,6 @@ $orange  orangen$white.sh$grey: A simple bash PIN generator for$orange livebox 2
 
 --------------------------------------------------------------------------------
 "
-
-
 until  [[ "$(echo $bssid | tr A-F a-f | egrep -o '^[0-9a-f]{4}' | wc -c)" == 5 ]];
   do
    echo -e "▐█ Entra los$white 4 últimos digítos$grey del$white bSSID$grey (sin los :) $orange"
