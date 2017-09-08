@@ -21,7 +21,7 @@ until  [[ "$(echo $bssid | tr A-F a-f | egrep -o '^[0-9a-f]{4}' | wc -c)" == 5 ]
    read -n 4 -ep "    " bssid
    echo -e "$grey"  
 done
-wan=$(printf '%04d\n' $(printf "%X\n" $(( 0x$(echo $bssid) - 2 ))))
+wan=$(printf "%04x" $(( 0x$(echo $bssid) - 2 )))
 until  [[ "$(echo $serial | egrep -o '^[0-9]{4}' | wc -c)" == 5 ]];
   do
    echo -e  "▐█ Entra los$white 4 últimos digítos$grey del$white número de serie$orange"
