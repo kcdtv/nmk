@@ -1,5 +1,5 @@
 #! /bin/bash
-version=1.1
+version=1.2
 # nmk.sh is a bash script that scans the wifi networks in search of livebox by arcadyan from orange (Spain) and genrates the default PIN every dtected device.
 # Copyright (C) 2017 kcdtv @ www.wifi-libre.com
 # This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
@@ -134,9 +134,15 @@ $orange▐█$white   Prensar <$orange CTRL$white +$orange C$white > para parrar
                   fi 
                 model=$( echo $line | awk -F '"' '{ print $26}')
                 serial=$( echo $line | awk -F '"' '{ print $38}') 
-                mac=$(printf "%X\n" $(( 0x$(echo $bssid | tr -d ':') - 2 )) | cut -c 9-) 
+                uuid=$( echo $line | awk -F '"' '{ print $42}' | cut -c 29- )
+                  if [[ $uuid == 0000 ]] ;
+                    then
+                      wan="ffff"
+                  else
+                      wan=$(printf "%04x" $(( 0x$uuid - 1 )))
+                  fi     
                 seri=$( echo $serial | cut -c 7-)
-                pin=$( python orangen.py $mac $seri)
+                pin=$( python orangen.py $wan $seri)
                 echo -e "$orange$bssid  $white$ssid  $orange$channel  $white$rssi  $yellow$pin $abierto  $orange$serial  $white$model$grey"
            fi
         done < /tmp/scan
@@ -146,6 +152,7 @@ trap - SIGINT
 kill $washPID 2>/dev/null
 echo -e "
 $orange▐█   $white La interfaz$orange $iface$white sigue en modo monitor.$grey
+
 Copyleft (C) 2017 kcdtv @ www.wifi-libre.com$grey"
 rm -r /tmp/interfaces /tmp/scan /tmp/iwdev
 exit 0
