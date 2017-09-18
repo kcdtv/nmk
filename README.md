@@ -49,14 +49,14 @@ Visit [reaver t6x repository](https://github.com/t6x/reaver-wps-fork-t6x) for mo
  [![livebox4]]  
  - Just press CTRL + C to stop the script.  
  Interface is left in monitor mode in order to perform a reaver attack with the deafult PIN.  
- In good conditions WPA key is recovered inmediatly.  
-   
+ In good conditions WPA keys from ARV7520CW22 and VRV9510KWAC23 are recovered inmediatly 
+ Due to a very bad implementation of the WPS protocole, recovering the WPA key from the ARV7519RW22 is extremly tedious (to not say impossible).   
    
 # How to use orangen.py
 ```
 python orangen.py < 4 last digits mac WAN > < 4 last digits serial > 
 ```
-tip: substract 2 from bSSID to get the WAN MAC  
+free tips: The four last digits from WAN mac are the same than the four last digits from default eSSID. If default eSSID is not used you can get the 4 digits by substracting 2 from bSSID (in base 16).  
   
   
 # How to use orangen.sh  
@@ -64,12 +64,11 @@ Locate your terminal in your "nmk" folder and invocate bash to execute the scrip
 ```
 bash orangen.sh
 ```  
-warning: Do **not** moove **orangen.py** from your **nmk** folder; it has to be in your nmk folder when you execute the script.  
-
+User will be prompted to enter bSSID (from tyhe 2.4Ghz network) and the four last digits from serial number.  
 
 
 # Credits
-Full disclosure "Arcadyan livebox PIN generator" by **wifi-libre**, scripts by **kcdtv**
+Full disclosure "Arcadyan livebox PIN generator" is a colective work  by **wifi-libre**, scripts by **kcdtv**
 
 
 
