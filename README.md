@@ -1,5 +1,5 @@
 # nmk[![Bash4.2-shield]](http://tldp.org/LDP/abs/html/bashver4.html#AEN21220) [![License-shield]](https://raw.githubusercontent.com/v1s1t0r1sh3r3/airgeddon/master/LICENSE.md)   
-Tool kit for generating WPS default PIN for Livebox 2.1 and Lievbox Next from Orange (ISP Spain)  
+"Tool kit" for generating the WPS default PIN from Livebox 2.1 and Lievbox Next by Orange (ISP Spain)  
 [![livebox1]]  
 
 # Description
@@ -7,18 +7,17 @@ Tool kit for generating WPS default PIN for Livebox 2.1 and Lievbox Next from Or
  - Arcadyan ARV7519RW22 
  - Arcadyan ARV7520CW22  
  - Arcadyan VRV9510KWAC23  
- The two frist Access Points are also known as **Livebox 2.1** and the thrid one as **Livebox Next**
- Once it such Acess Point is detected the script generates it default PIN and shows it in the shell
+The two frist Access Points are also known as **Livebox 2.1** and the thrid one is known as **Livebox Next**
+
  
  # About the WPS breach
 The PIN algorithm was investigated and deduced by **wifi-libre** members: [Todo sobre al algoritmo WPS Livebox Arcadyan (Orange-XXXX)](https://www.wifi-libre.com/topic-869-todo-sobre-al-algoritmo-wps-livebox-arcadyan-orange-xxxx.html#p7018)  
 It is quite similar to the one discovered by **Stefan Viehböck** on Arcadyan easy-box: [(Vodafone EasyBox Default WPS PIN Algorithm Weakness](http://seclists.org/fulldisclosure/2013/Aug/51)  
-THe livebox is quite popular in Spain and we are speaking about more than a milion devices affected.  
+0range has several millions of clients in Spain and has been using exclusivly this three models sionce 2012.  
 
 # Dependencies
-
 **nmk.sh** requires **wash 1.6.1** (or a superior version) and its depemdemcies.  
-This are the general steps in a debian based system to install **reaver 1.6.1** (it includes **wash**)  
+Theses are the general steps to follow in a debian based system in order to install **reaver 1.6.1** (it includes **wash**)  
  - Install the dependecies    
 ~~~
 sudo apt install libpcap-dev
