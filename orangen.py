@@ -1,4 +1,5 @@
 #!/usr/bin/python
+version=1.0
 # orangen.py: simplified default pin generator for livebox 2.1 and livebox next
 # usage: python orangen.py <4 last digits from wan mac> <4 last digits from serial>
 # It will just return the PIN  
@@ -39,4 +40,4 @@ d6  = s3 ^ m4
 d7  = k1 ^ s2 
 pin = int("0x%1x%1x%1x%1x%1x%1x%1x"%(d1, d2, d3, d4, d5, d6, d7), 16) % 10000000
 pin = "%.7d%d" %(pin, wps_checksum(pin))
-print pin
+print (pin)
