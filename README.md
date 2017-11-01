@@ -1,24 +1,25 @@
 # nmk[![Bash4.2-shield]](http://tldp.org/LDP/abs/html/bashver4.html#AEN21220) [![License-shield]](https://raw.githubusercontent.com/v1s1t0r1sh3r3/airgeddon/master/LICENSE.md)   
-"Tool kit" for generating the WPS default PIN from Livebox 2.1 and Lievbox Next by Orange (ISP Spain)  
+"Tool kit" to generate the default WPS  PIN from spanish Livebox 2.1 and Livebox Next by Orange.  
 [![livebox1]]  
 
 # Description
-**N**aranja **M**ekani**K** (**nmk**) is a tool kit that porposes different way to genrate the default PIN from: 
+**N**aranja **M**ekani**K** (**nmk**) is a tool kit that proposes different ways to generate the default WPS PIN from: 
  - Arcadyan ARV7519RW22 
  - Arcadyan ARV7520CW22  
  - Arcadyan VRV9510KWAC23  
-The two frist Access Points are also known as **Livebox 2.1** and the thrid one is known as **Livebox Next**
+The two frist Access Points are also known as **Livebox 2.1** and the third one is known as **Livebox Next**
 
  
  # About the WPS breach
-The PIN algorithm was investigated and deduced by **wifi-libre** members: [Todo sobre al algoritmo WPS Livebox Arcadyan (Orange-XXXX)](https://www.wifi-libre.com/topic-869-todo-sobre-al-algoritmo-wps-livebox-arcadyan-orange-xxxx.html#p7018)  
-It is quite similar to the one discovered by **Stefan Viehböck** on Arcadyan easy-box: [(Vodafone EasyBox Default WPS PIN Algorithm Weakness](http://seclists.org/fulldisclosure/2013/Aug/51)  
-0range has several millions of clients in Spain and has been using exclusivly this three models sionce 2012.  
+The PIN algorithm was investigated and found by **wifi-libre** members: [Todo sobre al algoritmo WPS Livebox Arcadyan (Orange-XXXX)](https://www.wifi-libre.com/topic-869-todo-sobre-al-algoritmo-wps-livebox-arcadyan-orange-xxxx.html#p7018)  
+It is similar to the one discovered by **Stefan Viehböck** on Arcadyan easy-box: [(Vodafone EasyBox Default WPS PIN Algorithm Weakness](http://seclists.org/fulldisclosure/2013/Aug/51)  
+0range has several millions of clients in Spain and has been using exclusivly this three AP models since 2012. 
+
 
 # Dependencies
-**nmk.sh** requires **wash 1.6.1** (or a superior version) and its depemdemcies.  
-Theses are the general steps to follow in a debian based system in order to install **reaver 1.6.1** (it includes **wash**)  
- - Install the dependecies    
+**nmk.sh** requires **wash 1.6.1** (or a superior version) and its dependencies.  
+Steps to follow in a debian based system in order to install **reaver 1.6.1** (it includes **wash**):  
+ - Install the dependencies    
 ~~~
 sudo apt install libpcap-dev
 ~~~
@@ -27,6 +28,7 @@ sudo apt install libpcap-dev
 git clone https://github.com/t6x/reaver-wps-fork-t6x.git
 cd reaver-wps-fork-t6x/src/
 ./configure
+make
 sudo make install
 ~~~  
 Visit [reaver t6x repository](https://github.com/t6x/reaver-wps-fork-t6x) for more information about wash and reaver.  
@@ -37,18 +39,18 @@ Visit [reaver t6x repository](https://github.com/t6x/reaver-wps-fork-t6x) for mo
  ~~~
  git clone https://github.com/kcdtv/nmk.git
  ~~~
- - Execute the script wth administrator privileges
+ - Execute the script with administrator privileges
  ~~~
  cd nmk; sudo bash nmk.sh
  ~~~  
  
- - If several interfaces are avalaible user is prompted to choose  
-[![livebox3]]  
- - Once an interface is selected the scan begins and when a vulnerable target is detected it is reported with it PIN genrated  
+ - If several interfaces are avalaible user is prompted to choose one  
+ [![livebox3]]  
+ - Once an interface is selected the scan begins and when a vulnerable target is detected it is reported with its PIN genrated  
  [![livebox4]]  
- - Just press CTRL + C to stop the script.  
- Interface is left in monitor mode in order to perform a reaver attack with the deafult PIN.  
- In good conditions WPA keys from ARV7520CW22 and VRV9510KWAC23 are recovered inmediatly 
+ - Press CTRL + C to stop the scan and the script.  
+ Interface is left in monitor mode in order to perform a reaver attack with the default PIN.  
+ In good conditions the WPA keys from ARV7520CW22 and VRV9510KWAC23 are recovered inmediatly 
  Due to a very bad implementation of the WPS protocole, recovering the WPA key from the ARV7519RW22 is extremly tedious (to not say impossible).   
    
 # How to use orangen.py
@@ -63,7 +65,7 @@ Locate your terminal in your "nmk" folder and invocate bash to execute the scrip
 ```
 bash orangen.sh
 ```  
-User will be prompted to enter bSSID (from tyhe 2.4Ghz network) and the four last digits from serial number.  
+User will be prompted to enter bSSID (from the 2.4Ghz network) and the four last digits from serial number.  
 
 
 # Credits
