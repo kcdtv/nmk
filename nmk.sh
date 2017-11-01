@@ -1,5 +1,5 @@
 #! /bin/bash
-version=1.3
+version=1.4
 # nmk.sh is a bash script that scans the wifi networks in search of livebox by arcadyan from orange (Spain) and it genrates the default WPS PIN for the vulnerables devices detected.
 # Copyright (C) 2017 kcdtv @ www.wifi-libre.com
 # This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
@@ -41,17 +41,17 @@ echo -e "$orange▐█$white   Comprobando instalación reaver$grey"
 which reaver || { echo -e "$red▐█   Error$grey -$yellow Reaver$grey no está instalado.  Instala la última revisión de $yellow Reaver v1.6.1$grey (o versión superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; } 
 reaver  &>> /tmp/versionreaver
-grep "Reaver v1.6." /tmp/versionreaver || { echo -e "$red▐█   Error$grey - Se debe actualizar reaver. Instala la última revisión de $yellow Reaver v1.6.1$grey (o duperior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey  
+grep "Reaver v1.6." /tmp/versionreaver || { echo -e "$red▐█   Error$grey - Se debe actualizar reaver. Instala la última revisión de $yellow Reaver v1.6.1$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey  
 $red▐█   Exit.$grey"; exit 1; }
 rm /tmp/versionreaver
 echo -e "$orange▐█$white   Comprobando instalación wash$grey"
 which wash || { echo -e "$red▐█   Error$grey -$yellow Wash$grey no está instalado. Instala la última revisión de $yellow Reaver v1.6.1$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; }
 wash  &>> /tmp/versionwash
-grep "extended WPS info" /tmp/versionwash || { echo -e "$red▐█   Error$grey - Se debe actualizar wash. Instala la última revisión de $yellow Reaver v1.6.1$grey (o duperior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
+grep "extended WPS info" /tmp/versionwash || { echo -e "$red▐█   Error$grey - Se debe actualizar wash. Instala la última revisión de $yellow Reaver v1.6.1$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; }
 echo -e "$orange▐█$white   Comprobando orangen.py$grey"
-[ -f orangen.py ] || { echo -e "$red▐█   Error$grey - Debeís ejecutar el script con la terminal situada en el driectorio $yellow nmk$grey. No borreís o moveís el script$yellow orangen.py$grey situado en dicho driectorio.  
+[ -f orangen.py ] || { echo -e "$red▐█   Error$grey - Debeís ejecutar el script con la terminal situada en el driectorio $yellow nmk$grey. No borreís o mováis el script$yellow orangen.py$grey situado en dicho directorio.  
 $red▐█   Exit.$grey"; exit 1; }
 
 # WiFi Interface selection and mode monitor activation
@@ -79,7 +79,7 @@ $red▐█   Exit.$grey"
         wlan=$(awk '{ print $2 }' /tmp/interfaces | sed "$number!d" 2>/dev/null )   
            if [ -z "$wlan" ]; 
              then
-                echo -e "$red▐█   Error$grey -$white Numero interfaz incorrecto ($orange$number$white).$grey"
+                echo -e "$red▐█   Error$grey -$white Número interfaz incorrecto ($orange$number$white).$grey"
            else
                 echo -e "$orange▐█$white   Interfaz $orange$wlan$white seleccionada$grey"
            fi 
@@ -110,7 +110,7 @@ phy=$(airmon-ng | grep '\'"$iface"'\b' | awk '{ print $1 }')
 # aband=$(iw phy $phy info | grep -o "5200 MHz")    #  To eventualy introduce 5Ghz scanning
 
 # Launching the scan with live default PIN generation
-wash -i $iface -j >> /tmp/scan &
+wash -i $iface -s -n 100 -j >> /tmp/scan &
 washPID=$!
 trap 'break' SIGINT
   for (( i=0; ;i+=4 ))
