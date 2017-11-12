@@ -1,5 +1,5 @@
 #! /bin/bash
-version=1.4
+version=1.5
 # nmk.sh is a bash script that scans the wifi networks in search of livebox by arcadyan from orange (Spain) and it genrates the default WPS PIN for the vulnerables devices detected.
 # Copyright (C) 2017 kcdtv @ www.wifi-libre.com
 # This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
@@ -38,17 +38,17 @@ echo -e "$orange▐█$white   Comprobando privilegios$grey"
 whoami | grep root || { echo -e "$red▐█   Error$grey - Se debe ejecutar el script con$yellow sudo$grey o$yellow su$grey para tener privilegios de administrador.  
 $red▐█   Exit.$grey"; exit 1; }
 echo -e "$orange▐█$white   Comprobando instalación reaver$grey"
-which reaver || { echo -e "$red▐█   Error$grey -$yellow Reaver$grey no está instalado.  Instala la última revisión de $yellow Reaver v1.6.1$grey (o versión superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
+which reaver || { echo -e "$red▐█   Error$grey -$yellow Reaver$grey no está instalado.  Instala la última revisión de $yellow Reaver v1.6.3$grey (o versión superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; } 
 reaver  &>> /tmp/versionreaver
-grep "Reaver v1.6." /tmp/versionreaver || { echo -e "$red▐█   Error$grey - Se debe actualizar reaver. Instala la última revisión de $yellow Reaver v1.6.1$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey  
+grep "Reaver v1.6.3" /tmp/versionreaver || { echo -e "$red▐█   Error$grey - Se debe actualizar reaver. Instala la última revisión de $yellow Reaver v1.6.1$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey  
 $red▐█   Exit.$grey"; exit 1; }
 rm /tmp/versionreaver
 echo -e "$orange▐█$white   Comprobando instalación wash$grey"
-which wash || { echo -e "$red▐█   Error$grey -$yellow Wash$grey no está instalado. Instala la última revisión de $yellow Reaver v1.6.1$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
+which wash || { echo -e "$red▐█   Error$grey -$yellow Wash$grey no está instalado. Instala la última revisión de $yellow Reaver v1.6.3$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; }
 wash  &>> /tmp/versionwash
-grep "extended WPS info" /tmp/versionwash || { echo -e "$red▐█   Error$grey - Se debe actualizar wash. Instala la última revisión de $yellow Reaver v1.6.1$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
+grep "Wash v1.6.3" /tmp/versionwash || { echo -e "$red▐█   Error$grey - Se debe actualizar wash. Instala la última revisión de $yellow Reaver v1.6.3$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; }
 echo -e "$orange▐█$white   Comprobando orangen.py$grey"
 [ -f orangen.py ] || { echo -e "$red▐█   Error$grey - Debeís ejecutar el script con la terminal situada en el driectorio $yellow nmk$grey. No borreís o mováis el script$yellow orangen.py$grey situado en dicho directorio.  
@@ -131,16 +131,16 @@ $orange▐█$white   Pulsar <$orange CTRL$white +$orange C$white > para parar e
                 ssid=$(echo "$essid           " | cut -c -11 )  
                 channel=$(echo 0$( echo $line | awk -F '"' '{ print $11}' | awk '{ print $2}' | tr -d ',' )| rev | cut -c 1-2 | rev)
                 rssi=$(echo $line | awk -F '"' '{ print $13}' | cut -c4-6)
-                lck=$(echo $line | awk -F '"' '{ print $19}' | cut -c 4)
+                lck=$(echo $line | awk -F '"' '{ print $21}' | cut -c 4)
                   if [[ $lck == 2 ]];
                     then
                       abierto=$(echo -e "$green sí")
                     else
                       abierto=$(echo -e "$red no") 
                   fi 
-                model=$(echo $line | awk -F '"' '{ print $26}')
-                serial=$(echo $line | awk -F '"' '{ print $38}') 
-                uuid=$(echo $line | awk -F '"' '{ print $42}' | cut -c 29-)
+                model=$(echo $line | awk -F '"' '{ print $30}')
+                serial=$(echo $line | awk -F '"' '{ print $42}') 
+                uuid=$(echo $line | awk -F '"' '{ print $46}' | cut -c 29-)
                   if [[ $uuid == 0000 ]] ;
                     then
                       wan="ffff"
