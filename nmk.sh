@@ -41,7 +41,7 @@ echo -e "$orange▐█$white   Comprobando instalación reaver$grey"
 which reaver || { echo -e "$red▐█   Error$grey -$yellow Reaver$grey no está instalado.  Instala la última revisión de $yellow Reaver v1.6.3$grey (o versión superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; } 
 reaver  &>> /tmp/versionreaver
-grep "Reaver v1.6.3" /tmp/versionreaver || { echo -e "$red▐█   Error$grey - Se debe actualizar reaver. Instala la última revisión de $yellow Reaver v1.6.1$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey  
+grep "Reaver v1.6.3" /tmp/versionreaver || { echo -e "$red▐█   Error$grey - Se debe actualizar reaver. Instala la última revisión de $yellow Reaver v1.6.3$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey  
 $red▐█   Exit.$grey"; exit 1; }
 rm /tmp/versionreaver
 echo -e "$orange▐█$white   Comprobando instalación wash$grey"
