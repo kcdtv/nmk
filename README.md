@@ -14,11 +14,12 @@ The two frist Access Points are also known as **Livebox 2.1** and the third one 
 The PIN algorithm was investigated and found by **wifi-libre** members: [Todo sobre al algoritmo WPS Livebox Arcadyan (Orange-XXXX)](https://www.wifi-libre.com/topic-869-todo-sobre-al-algoritmo-wps-livebox-arcadyan-orange-xxxx.html#p7018)  
 It is similar to the one discovered by **Stefan Viehböck** on Arcadyan easy-box: [(Vodafone EasyBox Default WPS PIN Algorithm Weakness](http://seclists.org/fulldisclosure/2013/Aug/51)  
 0range has several millions of clients in Spain and has been using exclusivly this three AP models since 2012. 
+**Notice that Orange disabled remotely the WPS PIN mode on this devices since the publication of the full disclosure. The vulnerability is no longer exploitable unless the device was not actualized since August-September 2017**
 
 
 # Dependencies
-**nmk.sh** requires **wash 1.6.1** (or a superior version) and its dependencies.  
-Steps to follow in a debian based system in order to install **reaver 1.6.1** (it includes **wash**):  
+**nmk.sh** requires **wash 1.6.3** (or a superior version) and its dependencies.  
+Steps to follow in a debian based system in order to install **the latest version of reaver** (it includes **wash**):  
  - Install the dependencies    
 ~~~
 sudo apt install libpcap-dev
