@@ -1,13 +1,13 @@
 #! /bin/bash
-version=1.7
+version=1.7.1
 # nmk.sh is a bash script that scans the wifi networks in search of livebox by arcadyan from orange (Spain) and it genrates the default WPS PIN for the vulnerables devices detected.
-# Copyright (C) 2017 kcdtv @ www.wifi-libre.com
+# Copyleft (C) 2017 kcdtv @ www.wifi-libre.com
 # This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
 # Contact author: kcdtv@wifi-libre.com
 
-# Full disclosure about the arcadyan the breach in https://www.wifi-libre.com/topic-869-todo-sobre-al-algoritmo-wps-livebox-arcadyan-orange-xxxx.html
+# Full disclosure about this security breach in https://www.wifi-libre.com/topic-869-todo-sobre-al-algoritmo-wps-livebox-arcadyan-orange-xxxx.html
 
 # Global variables:
 grey="\033[0;37m"
@@ -17,7 +17,7 @@ yellow="\033[1;33m"
 white="\033[1;37m"
 green="\033[0;32m"
 
-# Function
+# Banner
 echo -e "Copyleft (C) 2017 kcdtv @ www.wifi-libre.com
 
 	$orange		 ▐ ▄ • ▌ ▄ ·. ▄ •▄   $white .▄▄ ·  ▄ .▄
@@ -33,7 +33,7 @@ $white version$orange $version$grey -$white coded by$orange kcdtv$white for$oran
 
 "
 
-# Check privileges, dependencies, monitor mode compatibility, reaver and wash.
+# Check privileges, dependencies, monitor mode compatibility, reaver and wash compatibility.
 echo -e "$orange▐█$white   Comprobando privilegios$grey"
 whoami | grep root || { echo -e "$red▐█   Error$grey - Se debe ejecutar el script con$yellow sudo$grey o$yellow su$grey para tener privilegios de administrador.  
 $red▐█   Exit.$grey"; exit 1; }
@@ -48,7 +48,7 @@ echo -e "$orange▐█$white   Comprobando instalación wash$grey"
 which wash || { echo -e "$red▐█   Error$grey -$yellow Wash$grey no está instalado. Instala la última revisión de $yellow Reaver v1.6.3$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; }
 wash  &>> /tmp/versionwash
-grep -E "Wash v1.6.3|Wash v1.6.4" /tmp/versionwash || { echo -e "$red▐█   Error$grey - Se debe actualizar wash. Instala la última revisión de $yellow Reaver v1.6.3$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
+grep -E "Wash v1.6.3|Wash v1.6.4|Wash v1.6.5" /tmp/versionwash || { echo -e "$red▐█   Error$grey - Se debe actualizar wash. Instala la última revisión de $yellow Reaver v1.6.3$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; }
 echo -e "$orange▐█$white   Comprobando orangen.py$grey"
 [ -f orangen.py ] || { echo -e "$red▐█   Error$grey - Debeís ejecutar el script con la terminal situada en el driectorio $yellow nmk$grey. No borreís o mováis el script$yellow orangen.py$grey situado en dicho directorio.  
