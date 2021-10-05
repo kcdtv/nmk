@@ -41,14 +41,14 @@ echo -e "$orange▐█$white   Comprobando instalación reaver$grey"
 which reaver || { echo -e "$red▐█   Error$grey -$yellow Reaver$grey no está instalado.  Instala la última revisión de $yellow Reaver v1.6.3$grey (o versión superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; } 
 reaver  &>> /tmp/versionreaver
-grep -E "Reaver v1.6.3|Reaver v1.6.4|Reaver v1.6.5" /tmp/versionreaver || { echo -e "$red▐█   Error$grey - Se debe actualizar reaver. Instala la última revisión de $yellow Reaver v1.6.3$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey  
+grep -E "Reaver v1.6.3|Reaver v1.6.4|Reaver v1.6.5|Reaver v1.6.6" /tmp/versionreaver || { echo -e "$red▐█   Error$grey - Se debe actualizar reaver. Instala la última revisión de $yellow Reaver v1.6.3$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey  
 $red▐█   Exit.$grey"; exit 1; }
 rm /tmp/versionreaver
 echo -e "$orange▐█$white   Comprobando instalación wash$grey"
 which wash || { echo -e "$red▐█   Error$grey -$yellow Wash$grey no está instalado. Instala la última revisión de $yellow Reaver v1.6.3$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; }
 wash  &>> /tmp/versionwash
-grep -E "Wash v1.6.3|Wash v1.6.4|Wash v1.6.5" /tmp/versionwash || { echo -e "$red▐█   Error$grey - Se debe actualizar wash. Instala la última revisión de $yellow Reaver v1.6.3$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
+grep -E "Wash v1.6.3|Wash v1.6.4|Wash v1.6.5|Wash v1.6.6" /tmp/versionwash || { echo -e "$red▐█   Error$grey - Se debe actualizar wash. Instala la última revisión de $yellow Reaver v1.6.3$grey (o superior) desde:$white https://github.com/t6x/reaver-wps-fork-t6x$grey 
 $red▐█   Exit.$grey"; exit 1; }
 echo -e "$orange▐█$white   Comprobando orangen.py$grey"
 [ -f orangen.py ] || { echo -e "$red▐█   Error$grey - Debeís ejecutar el script con la terminal situada en el driectorio $yellow nmk$grey. No borreís o mováis el script$yellow orangen.py$grey situado en dicho directorio.  
